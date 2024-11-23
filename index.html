@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Website Wonosobo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #85a0bb;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        header h1 {
+            font-size: 3em;
+        }
+
+        /* Section with Cards */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+          }
+
+/* Background Image for Body */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-image: url('bg.jpeg'); /* Ganti dengan URL gambar latar belakang */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+}
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background-color: #adc9e4;
+            color: white;
+            padding: 20px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card-img:hover {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .card-footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ccc;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h3 {
+            color: #b5c8db;
+        }
+
+        .modal-content p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #b8d3ee;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Selamat Datang di Wonosobo</h1>
+        <p>Aman Sehat Rapi Indah</p>
+    </header>
+
+    <!-- Card Container with Interactive Cards -->
+    <div class="card-container">
+        <!-- Card 1: Pengenalan Wonosobo -->
+        <div class="card" onclick="openModal('modal1')">
+            <div class="card-header">
+                <h3>Pengenalan Wonosobo</h3>
+            </div>
+            <img src="pengenalan.jpg" alt="Pengenalan" class="card-img">
+            <div class="card-footer">
+                <span>Info</span>
+            </div>
+        </div>
+
+        <!-- Card 2: Sejarah Wonosobo -->
+        <div class="card" onclick="openModal('modal2')">
+            <div class="card-header">
+                <h3>Sejarah Wonosobo</h3>
+            </div>
+            <img src="sejarah.jpeg" alt="Sejarah" class="card-img">
+            <div class="card-footer">
+                <span>Info</span>
+            </div>
+        </div>
+
+        <!-- Card 3: Kuliner Wonosobo -->
+        <div class="card" onclick="openModal('modal3')">
+            <div class="card-header">
+                <h3>Kuliner Wonosobo</h3>
+            </div>
+            <img src="kuliner.jpg" alt="Kuliner" class="card-img">
+            <div class="card-footer">
+                <span>Info</span>
+            </div>
+        </div>
+
+        <!-- Card 4: Tempat Wisata Wonosobo -->
+        <div class="card" onclick="openModal('modal4')">
+            <div class="card-header">
+                <h3>Tempat Wisata Wonosobo</h3>
+            </div>
+            <img src="me.jpeg" alt="Wisata" class="card-img">
+            <div class="card-footer">
+                <span>Info</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Pengenalan Wonosobo -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h3>Pengenalan Wonosobo</h3>
+            <p>Wonosobo adalah sebuah kecamatan sekaligus menjadi ibu kota kabupaten di Kabupaten Wonosobo, Provinsi Jawa Tengah, Indonesia. Luas wilayah kecamatan ini sekitar 33.00 km² yang terbagi menjadi 20 desa/kelurahan. Kota ini dijuluki sebagai "Kota Seribu Gunung", karena dikelilingi oleh pegunungan yang menjadi daya tarik utama wisata Wonosobo.</p>
+            
+        </div>
+    </div>
+
+    <!-- Modal for Sejarah Wonosobo -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h3>Sejarah Wonosobo</h3>
+            <p>Kabupaten Wonosobo secara resmi berdiri pada 24 Juli 1825. Pada hari tersebut, Muhamad Ngarpah dan Mulya Sentika berhasil mengalahkan Belanda dalam pertempuran di Legorok, perbatasan Magelang dan Wonosobo.Kata Wonosobo berasal dari bahasa Jawa, yaitu Wanasaba, yang berarti "tempat berkumpul di hutan".</p>
+        </div>
+    </div>
+
+    <!-- Modal for Kuliner Wonosobo -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h3>Kuliner Wonosobo</h3>
+            <p>Wonosobo memiliki kuliner khas seperti Mie Ongklok, yang terkenal di kalangan wisatawan. Mi ongklok disebut sebagai makanan khas Wonosobo karena diolah menggunakan potensi alam sekitar yang terdiri atas sayuran kol segar dan daun kucai yang dipotong-potong. Udara sejuk dan banyaknya embun, membuat berbagai jenis sayuran dapat tumbuh subur di Dataran Tinggi Dieng.</p>
+            
+        </div>
+    </div>
+
+    <!-- Modal for Tempat Wisata Wonosobo -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h3>Tempat Wisata Wonosobo</h3>
+            <p>wonosobo memiliki beberapa spot wisata yang menarik yaitu:
+                <p>Bukit Sikunir</p>
+                <p>Telaga Menjer</p>
+                <p>Batu Ratapan Angin</p>
+                <p>Gunung Prahu</p>
+                <p>Agrowisata Tambi</p>
+                <p>Gunung Sindoro</p>
+                <p>Air Terjun Sikarim</p>
+                <p>Gunung Cilik</p>
+                <p>Gunung Bismo</p>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Function to open modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        // Function to close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal when clicking outside of modal content
+        window.onclick = function(event) {
+            var modals = document.getElementsByClassName("modal");
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Komentar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .comment-form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .comment-form h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group textarea {
+            resize: none;
+            height: 100px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .social-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .social-link a {
+            text-decoration: none;
+            color: #007bff;
+            display: inline-flex;
+            align-items: center;
+        }
+        .social-link a:hover {
+            color: #0056b3;
+        }
+        .social-link img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="comment-form">
+        <h2>Forum Komentar</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan</label>
+                <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Kirim</button>
+        </form>
+        <div class="social-link">
+            <a href="https://www.instagram.com/kafkavelycia?igsh=MW9lc2xhbWtydG5vNw==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+                Ikuti saya di Instagram
+            </a>
+        </div>
+    </div>
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Website Wonosobo. Semua Hak Dilindungi.</p>
+</footer>
+
+</body>
+</html>
+
